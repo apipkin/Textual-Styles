@@ -1,0 +1,490 @@
+@import url('./Data/Resources/css/pure.css');
+div#body_home p {
+  margin: 0 5px !important;
+  text-indent: 0 !important;
+}
+/* Basic Structure */
+body {
+  color: #2a2a2a;
+  overflow: hidden;
+  overflow-y: visible;
+  background-color: #f2f2f2;
+  height: 100%;
+  font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+}
+#body_home {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 2em;
+  width: 100%;
+  z-index: 100;
+  position: absolute;
+  opacity: 0;
+  /* Set by JavaScript */
+
+  -webkit-transition: opacity 0.8s linear;
+  padding-bottom: 10px;
+}
+p {
+  margin: 0;
+  position: relative;
+  line-height: 1.5em;
+}
+.line.with-sender {
+  margin-top: 1em;
+}
+.line.hide-sender {
+  margin-top: 0;
+}
+.with-sender + .without-sender {
+  margin-top: 1em;
+}
+.sender {
+  font-weight: 700;
+  display: inline-block;
+  border-width: 1px 0;
+  border-style: solid;
+  padding: 3px 5px;
+  background-image: -webkit-linear-gradient(top, rgba(237, 237, 237, 0.5) 0%, rgba(204, 204, 204, 0.5) 100%);
+  color: #222 !important;
+  text-shadow: 0px 2px 3px rgba(230, 230, 230, 0.3);
+  box-shadow: 0 2px 3px rgba(26, 26, 26, 0.3);
+  position: relative;
+  z-index: 300;
+}
+.hide-sender {
+  margin-top: 0;
+}
+.hide-sender .sender {
+  display: none;
+}
+.message {
+  padding-left: 1em;
+  display: inline-block;
+}
+/* Time */
+.time {
+  color: #b3b3b3;
+  background: #fff;
+  opacity: 0;
+}
+.line:hover .time {
+  opacity: 1;
+}
+/* With Sender */
+.with-sender {
+  padding-bottom: 1em;
+}
+.with-sender.has-next {
+  padding-bottom: 0em;
+}
+.with-sender p {
+  background: #fff;
+  border: 1px solid black;
+  border-top-width: 0;
+  display: block;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 2px 3px rgba(26, 26, 26, 0.3);
+}
+.with-sender.has-next p {
+  border-radius: 0;
+  border-bottom-width: 0;
+}
+/* Without Sender */
+.without-sender {
+  padding: 5px 0px;
+  color: #737373;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  background: #e6e6e6;
+  border-width: 1px 0;
+}
+.without-sender .time {
+  background: #e6e6e6;
+}
+.without-sender + .without-sender {
+  border-top: none;
+}
+.without-sender a {
+  text-decoration: none;
+  color: #9496c2;
+}
+.without-sender a:hover {
+  text-decoration: underline;
+}
+.without-sender b {
+  font-weight: 500;
+}
+/* message decorations */
+body[dir=ltr] [type*=join] .message:before {
+  content: "→";
+  color: #0c0;
+}
+/* Colors */
+.sender[colornumber='0'],
+.inline_nickname[colornumber='0'] {
+  color: #0080ff;
+}
+.sender[colornumber='0'] {
+  border-color: #0080ff;
+  background-color: #0080ff;
+}
+.sender[colornumber='0'] + p {
+  border-color: #0080ff;
+}
+.sender[colornumber='1'],
+.inline_nickname[colornumber='1'] {
+  color: #059005;
+}
+.sender[colornumber='1'] {
+  border-color: #059005;
+  background-color: #059005;
+}
+.sender[colornumber='1'] + p {
+  border-color: #059005;
+}
+.sender[colornumber='2'],
+.inline_nickname[colornumber='2'] {
+  color: #a80054;
+}
+.sender[colornumber='2'] {
+  border-color: #a80054;
+  background-color: #a80054;
+}
+.sender[colornumber='2'] + p {
+  border-color: #a80054;
+}
+.sender[colornumber='3'],
+.inline_nickname[colornumber='3'] {
+  color: #9b0db1;
+}
+.sender[colornumber='3'] {
+  border-color: #9b0db1;
+  background-color: #9b0db1;
+}
+.sender[colornumber='3'] + p {
+  border-color: #9b0db1;
+}
+.sender[colornumber='4'],
+.inline_nickname[colornumber='4'] {
+  color: #108860;
+}
+.sender[colornumber='4'] {
+  border-color: #108860;
+  background-color: #108860;
+}
+.sender[colornumber='4'] + p {
+  border-color: #108860;
+}
+.sender[colornumber='5'],
+.inline_nickname[colornumber='5'] {
+  color: #7f4fff;
+}
+.sender[colornumber='5'] {
+  border-color: #7f4fff;
+  background-color: #7f4fff;
+}
+.sender[colornumber='5'] + p {
+  border-color: #7f4fff;
+}
+.sender[colornumber='6'],
+.inline_nickname[colornumber='6'] {
+  color: #58701a;
+}
+.sender[colornumber='6'] {
+  border-color: #58701a;
+  background-color: #58701a;
+}
+.sender[colornumber='6'] + p {
+  border-color: #58701a;
+}
+.sender[colornumber='7'],
+.inline_nickname[colornumber='7'] {
+  color: #620a8e;
+}
+.sender[colornumber='7'] {
+  border-color: #620a8e;
+  background-color: #620a8e;
+}
+.sender[colornumber='7'] + p {
+  border-color: #620a8e;
+}
+.sender[colornumber='8'],
+.inline_nickname[colornumber='8'] {
+  color: #bb0008;
+}
+.sender[colornumber='8'] {
+  border-color: #bb0008;
+  background-color: #bb0008;
+}
+.sender[colornumber='8'] + p {
+  border-color: #bb0008;
+}
+.sender[colornumber='9'],
+.inline_nickname[colornumber='9'] {
+  color: #44345f;
+}
+.sender[colornumber='9'] {
+  border-color: #44345f;
+  background-color: #44345f;
+}
+.sender[colornumber='9'] + p {
+  border-color: #44345f;
+}
+.sender[colornumber='10'],
+.inline_nickname[colornumber='10'] {
+  color: #2f5353;
+}
+.sender[colornumber='10'] {
+  border-color: #2f5353;
+  background-color: #2f5353;
+}
+.sender[colornumber='10'] + p {
+  border-color: #2f5353;
+}
+.sender[colornumber='11'],
+.inline_nickname[colornumber='11'] {
+  color: #904000;
+}
+.sender[colornumber='11'] {
+  border-color: #904000;
+  background-color: #904000;
+}
+.sender[colornumber='11'] + p {
+  border-color: #904000;
+}
+.sender[colornumber='12'],
+.inline_nickname[colornumber='12'] {
+  color: #808000;
+}
+.sender[colornumber='12'] {
+  border-color: #808000;
+  background-color: #808000;
+}
+.sender[colornumber='12'] + p {
+  border-color: #808000;
+}
+.sender[colornumber='13'],
+.inline_nickname[colornumber='13'] {
+  color: #57797e;
+}
+.sender[colornumber='13'] {
+  border-color: #57797e;
+  background-color: #57797e;
+}
+.sender[colornumber='13'] + p {
+  border-color: #57797e;
+}
+.sender[colornumber='14'],
+.inline_nickname[colornumber='14'] {
+  color: #3333dd;
+}
+.sender[colornumber='14'] {
+  border-color: #3333dd;
+  background-color: #3333dd;
+}
+.sender[colornumber='14'] + p {
+  border-color: #3333dd;
+}
+.sender[colornumber='15'],
+.inline_nickname[colornumber='15'] {
+  color: #5f4d22;
+}
+.sender[colornumber='15'] {
+  border-color: #5f4d22;
+  background-color: #5f4d22;
+}
+.sender[colornumber='15'] + p {
+  border-color: #5f4d22;
+}
+.sender[colornumber='16'],
+.inline_nickname[colornumber='16'] {
+  color: #706616;
+}
+.sender[colornumber='16'] {
+  border-color: #706616;
+  background-color: #706616;
+}
+.sender[colornumber='16'] + p {
+  border-color: #706616;
+}
+.sender[colornumber='17'],
+.inline_nickname[colornumber='17'] {
+  color: #46799c;
+}
+.sender[colornumber='17'] {
+  border-color: #46799c;
+  background-color: #46799c;
+}
+.sender[colornumber='17'] + p {
+  border-color: #46799c;
+}
+.sender[colornumber='18'],
+.inline_nickname[colornumber='18'] {
+  color: #80372e;
+}
+.sender[colornumber='18'] {
+  border-color: #80372e;
+  background-color: #80372e;
+}
+.sender[colornumber='18'] + p {
+  border-color: #80372e;
+}
+.sender[colornumber='19'],
+.inline_nickname[colornumber='19'] {
+  color: #8f478e;
+}
+.sender[colornumber='19'] {
+  border-color: #8f478e;
+  background-color: #8f478e;
+}
+.sender[colornumber='19'] + p {
+  border-color: #8f478e;
+}
+.sender[colornumber='20'],
+.inline_nickname[colornumber='20'] {
+  color: #5b9e4c;
+}
+.sender[colornumber='20'] {
+  border-color: #5b9e4c;
+  background-color: #5b9e4c;
+}
+.sender[colornumber='20'] + p {
+  border-color: #5b9e4c;
+}
+.sender[colornumber='21'],
+.inline_nickname[colornumber='21'] {
+  color: #13826c;
+}
+.sender[colornumber='21'] {
+  border-color: #13826c;
+  background-color: #13826c;
+}
+.sender[colornumber='21'] + p {
+  border-color: #13826c;
+}
+.sender[colornumber='22'],
+.inline_nickname[colornumber='22'] {
+  color: #b13637;
+}
+.sender[colornumber='22'] {
+  border-color: #b13637;
+  background-color: #b13637;
+}
+.sender[colornumber='22'] + p {
+  border-color: #b13637;
+}
+.sender[colornumber='23'],
+.inline_nickname[colornumber='23'] {
+  color: #e45d59;
+}
+.sender[colornumber='23'] {
+  border-color: #e45d59;
+  background-color: #e45d59;
+}
+.sender[colornumber='23'] + p {
+  border-color: #e45d59;
+}
+.sender[colornumber='24'],
+.inline_nickname[colornumber='24'] {
+  color: #1b51ae;
+}
+.sender[colornumber='24'] {
+  border-color: #1b51ae;
+  background-color: #1b51ae;
+}
+.sender[colornumber='24'] + p {
+  border-color: #1b51ae;
+}
+.sender[colornumber='25'],
+.inline_nickname[colornumber='25'] {
+  color: #4855ac;
+}
+.sender[colornumber='25'] {
+  border-color: #4855ac;
+  background-color: #4855ac;
+}
+.sender[colornumber='25'] + p {
+  border-color: #4855ac;
+}
+.sender[colornumber='26'],
+.inline_nickname[colornumber='26'] {
+  color: #7f1d86;
+}
+.sender[colornumber='26'] {
+  border-color: #7f1d86;
+  background-color: #7f1d86;
+}
+.sender[colornumber='26'] + p {
+  border-color: #7f1d86;
+}
+.sender[colornumber='27'],
+.inline_nickname[colornumber='27'] {
+  color: #73643f;
+}
+.sender[colornumber='27'] {
+  border-color: #73643f;
+  background-color: #73643f;
+}
+.sender[colornumber='27'] + p {
+  border-color: #73643f;
+}
+.sender[colornumber='28'],
+.inline_nickname[colornumber='28'] {
+  color: #0b9578;
+}
+.sender[colornumber='28'] {
+  border-color: #0b9578;
+  background-color: #0b9578;
+}
+.sender[colornumber='28'] + p {
+  border-color: #0b9578;
+}
+.sender[colornumber='29'],
+.inline_nickname[colornumber='29'] {
+  color: #569c96;
+}
+.sender[colornumber='29'] {
+  border-color: #569c96;
+  background-color: #569c96;
+}
+.sender[colornumber='29'] + p {
+  border-color: #569c96;
+}
+.sender[colornumber='30'],
+.inline_nickname[colornumber='30'] {
+  color: #08465f;
+}
+.sender[colornumber='30'] {
+  border-color: #08465f;
+  background-color: #08465f;
+}
+.sender[colornumber='30'] + p {
+  border-color: #08465f;
+}
+/* Topic Bar */
+#topic_bar {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 400;
+  opacity: 0;
+  /* Set by JavaScript */
+
+  color: #2a2a2a;
+  position: fixed;
+  padding: 2px 0.5em 3px;
+  box-shadow: 0 1px 5px #777;
+  border-bottom: 1px solid #61778F;
+  background-color: #f2f2f2;
+  background-image: -webkit-linear-gradient(top, rgba(237, 237, 237, 0.5) 0%, rgba(204, 204, 204, 0.5) 100%);
+  -webkit-transition: opacity 0.8s linear;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#topic_bar:hover {
+  overflow: visible;
+  white-space: normal;
+}
