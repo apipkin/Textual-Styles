@@ -72,16 +72,13 @@ body {
 }
 
 #body_home {
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 2em;
+	padding-top: 2em;
+	padding-bottom: 1px;
 	width: 100%;
 	z-index: 100;
-	position: absolute;
+	position: relative;
 	opacity: 0; /* Set by JavaScript */
 	-webkit-transition: opacity 0.8s linear;
-	padding-bottom: 10px;
 }
 
 
@@ -142,10 +139,10 @@ p {
 
 /* With Sender */
 .with-sender {
-	padding-bottom: 1em;
+	margin-bottom: 1em;
 }
 .with-sender.has-next {
-	padding-bottom: 0em;
+	margin-bottom: 0em;
 }
 .with-sender p {
 	background: #fff;
