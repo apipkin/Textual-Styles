@@ -1,55 +1,5 @@
-@color_0: #0080ff;
-@color_1: #059005;
-@color_2: #a80054;
-@color_3: #9b0db1;
-@color_4: #108860;
-@color_5: #7F4FFF;
-@color_6: #58701a;
-@color_7: #620a8e;
-@color_8: #BB0008;
-@color_9: #44345f;
-@color_10: #2f5353;
-@color_11: #904000;
-@color_12: #808000;
-@color_13: #57797e;
-@color_14: #3333dd;
-@color_15: #5f4d22;
-@color_16: #706616;
-@color_17: #46799c;
-@color_18: #80372e;
-@color_19: #8F478E;
-@color_20: #5b9e4c;
-@color_21: #13826c;
-@color_22: #b13637;
-@color_23: #e45d59;
-@color_24: #1b51ae;
-@color_25: #4855ac;
-@color_26: #7f1d86;
-@color_27: #73643f;
-@color_28: #0b9578;
-@color_29: #569c96;
-@color_30: #08465f;
-
-@itterations: 0; 
-
-.loopingClass (@index) when (@index < 31) {
-	@color: "color_@{index}";
-
-	.sender[colornumber='@{index}'], 
-	.inline_nickname[colornumber='@{index}'] { 
-		color: @@color;
-	}
-	.sender[colornumber='@{index}'] {
-		border-color: @@color;
-		background-color: @@color;
-	}
-	.sender[colornumber='@{index}'] + p {
-		border-color: @@color;
-	}
-
-	.loopingClass(@index + 1);
-}
-.loopingClass (31) {}
+@import 'Data/Resources/css/xarno-core.less';
+@import 'Data/Resources/css/xarno-colors.less';
 
 
 @import url('./Data/Resources/css/pure.css');
@@ -59,236 +9,206 @@
 
 body {
 	color: hsl(0, 0%, 16%);
-	overflow: hidden;
-	overflow-y: visible;
 	background-color: hsl(0, 0%, 95%);
-	height: 100%;
-	font-family: "proxima-nova", "Helvetica Neue", sans-serif;
-}
-
-.bd.wrapper {
-	padding: 2em 0 0;
-	width: 100%;
-}
-
-.sandbag {
-	display: inline-block;
-	height: 100%;
-	vertical-align: bottom;
-	width: 0px;
-	background: blue;
-}
-#body_home {
-	width: 100%;
-	opacity: 0; /* Set by JavaScript */
-	-webkit-transition: opacity 0.8s linear;
-	vertical-align: bottom;
-	display: inline-block;
-}
-
-
-p {
-	margin: 0 5px;
-	position: relative;
-	line-height: 1.5em;
 }
 
 #mark {
-	border-top: 1px dashed hsl(0, 0%, 87%);
+	border-color: hsl(0, 0%, 87%);
 }
 
-
-.line.with-sender {
-	margin-top: 1em;
-}
-.line.hide-sender {
-	margin-top: 0;
-}
-.with-sender + .without-sender {
-	margin-top: 1em;
-}
 
 .sender {
-	padding: 3px 5px;
-	font-weight: 700;
-	display: inline-block;
-	border-width: 1px 0;
-	border-style: solid;
-	padding: 3px 5px;
 	background-image: -webkit-linear-gradient(top, hsla(0, 0%, 93%, 0.5) 0%,hsla(0, 0%, 80%, 0.5) 100%);
 	color: hsl(0, 0%, 13%);
 	text-shadow: 0px 2px 3px hsla(0, 0, 90%, 0.3);
 	box-shadow: 0 2px 3px hsla(0, 0%, 10%, 0.3);
-	position: relative;
-	z-index: 300;
-}
-.hide-sender {
-	margin-top: 0;
-}
-.hide-sender .sender {
-	display: none;
-}
-
-.message {
-	padding-left: 1em;
-	display: inline-block;
 }
 
 /* Time */
 .time {
 	color: hsl(0, 0%, 70%);
 	background: hsl(0, 0%, 100%);
-	opacity: 0;
-}
-.line:hover .time {
-	opacity: 1;
 }
 
 
 /* With Sender */
-.with-sender {
-	margin-bottom: 1em;
-}
-.with-sender.has-next {
-	margin-bottom: 0em;
-}
 .with-sender p {
 	background: hsl(0, 0%, 100%);
-	border: 1px solid black;
-	border-top-width: 0;
-	display: block;
-	border-radius: 0 0 3px 3px;
+	border-color: black;
 	box-shadow: 0 2px 3px hsla(0, 0%, 10%, 0.3);
-}
-.with-sender.has-next p {
-	border-radius: 0;
-	border-bottom-width: 0;
 }
 
 
 
 /* Without Sender */
 .without-sender {
-	padding: 5px 0px;
 	color: hsl(0, 0%, 45%);
-	border-top: 1px solid hsl(0, 0%, 80%);
-	border-bottom: 1px solid hsl(0, 0%, 80%);
+	border-color: hsl(0, 0%, 80%);
 	background: hsl(0, 0%, 90%);
-	border-width: 1px 0;
 }
 .without-sender .time {
 	background: hsl(0, 0%, 90%);
 }
-.without-sender + .without-sender {
-	border-top: none;
-}
 
 .without-sender a {
-	text-decoration: none;
 	color: hsl(238, 27%, 67%);
 }
-.without-sender a:hover {
-	text-decoration: underline;
-}
 
-.without-sender b {
-	font-weight: 500;
-}
-
-
-/* inline images */
-.inlineimage {
-	display: block;
-	margin: 0.5em 0;
-}
 
 
 /* message decorations */
-.message:before {
-	font-family: 'FontAwesome';
-	margin-right: 0.6em;
-	text-shadow: 0px 2px 3px hsla(0, 0, 90%, 0.3);
-}
 [highlight*=true] .message:before {
-	content: '\f075'; /* icon-comment */
 	color: hsl(300, 50%, 50%);
 }
 [type*=debug] .message:before { 
-	content: '\f188'; /* icon-bug */
 	color: hsl(339, 100%, 33%);
 }
 [type*=invite] .message:before { 
-	content: '\f045'; /* icon-share */
 	color: hsl(38, 89%, 57%);
 }
 [type*=join] .message:before {
-	content: '\f061'; /* icon-arrow-right */
   	color: hsl(120, 100%, 40%);
 }
 [type*=kick] .message:before { 
-	content: '\f05e'; /* icon-ban-circle */
 	color: hsl(12, 73%, 42%);
 }
 [type*=kill] .message:before { 
-	content: '\f05c'; /* icon-remove-circle */
 	color: hsl(333, 93%, 42%);
 }
 [type*=mode] .message:before { 
-	content: '\f085'; /* icon-cogs */
 	color: hsl(214, 19%, 41%);
 }
 [type*=nick] .message:before { 
-	content: '\f007'; /* icon-user */
 	color: hsl(258, 93%, 68%);
 }
 [type*=part] .message:before { 
-	content: '\f126'; /* icon-code-fork */
 	color: hsl(278, 93%, 42%);
 }
 [type*=quit] .message:before { 
-	content: '\f060'; /* icon-arrow-left */
 	color: hsl(214, 19%, 41%);
 }
 [type*=topic] .message:before { 
-	content: '\f05a'; /* icon-info-sign */
 	color: hsl(200, 100%, 33%);
 }
 [type*=website] .message:before { 
-	content: '\f0ac'; /* icon-globe */
 	color: hsl(192, 62%, 48%);
 }
 
 
 
 /* Colors */
-.loopingClass(@itterations);
+.lightColors(@itterations);
 
 
 
 /* Topic Bar */
 #topic_bar {
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 400;
-	opacity: 0; /* Set by JavaScript */
 	color: hsl(0, 0%, 16%);
-	position: fixed;
-	padding: 2px 0.5em 3px;
 	box-shadow: 0 1px 5px hsl(0, 0%, 47%);
-	border-bottom: 1px solid hsl(211, 19%, 47%);
+	border-color: hsl(211, 19%, 47%);
 	background-color: hsl(0, 0%, 95%);
 	background-image: -webkit-linear-gradient(top, hsla(0, 0%, 93%, 0.5) 0%,hsla(0, 0%, 80%, 0.5) 100%);
-	-webkit-transition: opacity 0.8s linear;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
 }
 
-#topic_bar:hover {
-	overflow: visible;
-	white-space: normal;
-}
 #topic_bar a {
 	color: hsl(200, 78%, 38%);
+}
+
+
+/** DARK SKIN **/
+.dark body {
+	color: hsl(0, 0%, 95%);
+	background-color: hsl(0, 0%, 16%);
+}
+.dark #mark {
+	border-color: hsl(0, 0%, 13%);
+}
+
+.dark .sender {
+	color: hsl(0, 0%, 87%);
+}
+
+
+/* With Sender */
+.dark .with-sender p {
+	background: hsl(0, 0%, 25%);
+	border-color: black;
+}
+.dark .with-sender .time {
+	color: hsl(0, 0%, 30%);
+	background: hsl(0, 0%, 25%);
+}
+
+
+
+/* Without Sender */
+.dark .without-sender {
+	color: hsl(0, 0%, 55%);
+	border-color: hsl(0, 0%, 20%);
+	background: hsl(0, 0%, 10%);
+}
+.dark .without-sender .time {
+	background: hsl(0, 0%, 10%);
+}
+
+.dark .without-sender a {
+	color: hsl(238, 27%, 33%);
+}
+
+
+
+/* message decorations */
+.dark [highlight*=true] .message:before {
+	color: hsl(300, 50%, 50%);
+}
+.dark [type*=debug] .message:before { 
+	color: hsl(339, 100%, 66%);
+}
+.dark [type*=invite] .message:before { 
+	color: hsl(38, 89%, 43%);
+}
+.dark [type*=join] .message:before {
+  	color: hsl(120, 100%, 60%);
+}
+.dark [type*=kick] .message:before { 
+	color: hsl(12, 73%, 58%);
+}
+.dark [type*=kill] .message:before { 
+	color: hsl(333, 93%, 58%);
+}
+.dark [type*=mode] .message:before { 
+	color: hsl(214, 19%, 59%);
+}
+.dark [type*=nick] .message:before { 
+	color: hsl(258, 93%, 32%);
+}
+.dark [type*=part] .message:before { 
+	color: hsl(278, 93%, 58%);
+}
+.dark [type*=quit] .message:before { 
+	color: hsl(214, 19%, 59%);
+}
+.dark [type*=topic] .message:before { 
+	color: hsl(200, 100%, 66%);
+}
+.dark [type*=website] .message:before { 
+	color: hsl(192, 62%, 52%);
+}
+
+
+
+/* Colors */
+.darkColors(@itterations);
+
+
+
+/* Topic Bar */
+.dark #topic_bar {
+	color: hsl(0, 0%, 84%);
+	border-color: hsl(211, 19%, 53%);
+	background-color: hsl(0, 0%, 5%);
+}
+
+.dark #topic_bar a {
+	color: hsl(200, 78%, 62%);
 }

@@ -1,0 +1,112 @@
+@itterations: 0; 
+
+@light_color_0: #0080ff;
+@light_color_1: #059005;
+@light_color_2: #a80054;
+@light_color_3: #9b0db1;
+@light_color_4: #108860;
+@light_color_5: #7F4FFF;
+@light_color_6: #58701a;
+@light_color_7: #620a8e;
+@light_color_8: #BB0008;
+@light_color_9: #44345f;
+@light_color_10: #2f5353;
+@light_color_11: #904000;
+@light_color_12: #808000;
+@light_color_13: #57797e;
+@light_color_14: #3333dd;
+@light_color_15: #5f4d22;
+@light_color_16: #706616;
+@light_color_17: #46799c;
+@light_color_18: #80372e;
+@light_color_19: #8F478E;
+@light_color_20: #5b9e4c;
+@light_color_21: #13826c;
+@light_color_22: #b13637;
+@light_color_23: #e45d59;
+@light_color_24: #1b51ae;
+@light_color_25: #4855ac;
+@light_color_26: #7f1d86;
+@light_color_27: #73643f;
+@light_color_28: #0b9578;
+@light_color_29: #569c96;
+@light_color_30: #08465f;
+
+
+
+
+@dark_color_0: #0080ff;
+@dark_color_1: #059005;
+@dark_color_2: #a80054;
+@dark_color_3: #9b0db1;
+@dark_color_4: #108860;
+@dark_color_5: #7F4FFF;
+@dark_color_6: #58701a;
+@dark_color_7: #620a8e;
+@dark_color_8: #BB0008;
+@dark_color_9: #44345f;
+@dark_color_10: #2f5353;
+@dark_color_11: #904000;
+@dark_color_12: #808000;
+@dark_color_13: #57797e;
+@dark_color_14: #3333dd;
+@dark_color_15: #5f4d22;
+@dark_color_16: #706616;
+@dark_color_17: #46799c;
+@dark_color_18: #80372e;
+@dark_color_19: #8F478E;
+@dark_color_20: #5b9e4c;
+@dark_color_21: #13826c;
+@dark_color_22: #b13637;
+@dark_color_23: #e45d59;
+@dark_color_24: #1b51ae;
+@dark_color_25: #4855ac;
+@dark_color_26: #7f1d86;
+@dark_color_27: #73643f;
+@dark_color_28: #0b9578;
+@dark_color_29: #569c96;
+@dark_color_30: #08465f;
+
+
+
+
+.lightColors (@index) when (@index < 31) {
+	@color: "light_color_@{index}";
+
+	.sender[colornumber='@{index}'], 
+	.inline_nickname[colornumber='@{index}'] { 
+		color: @@color;
+	}
+	.sender[colornumber='@{index}'] {
+		border-color: @@color;
+		background-color: @@color;
+	}
+	.sender[colornumber='@{index}'] + p {
+		border-color: @@color;
+	}
+
+	.lightColors(@index + 1);
+}
+
+.lightColors (31) {}
+
+
+.darkColors (@index) when (@index < 31) {
+	@color: "dark_color_@{index}";
+
+	.dark .sender[colornumber='@{index}'], 
+	.dark .inline_nickname[colornumber='@{index}'] { 
+		color: @@color;
+	}
+	.dark .sender[colornumber='@{index}'] {
+		border-color: @@color;
+		background-color: @@color;
+	}
+	.dark .sender[colornumber='@{index}'] + p {
+		border-color: @@color;
+	}
+
+	.darkColors(@index + 1);
+}
+
+.darkColors (31) {}
