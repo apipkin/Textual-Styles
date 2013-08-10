@@ -33,15 +33,17 @@ Textual.newMessagePostedToView = function (line) {
 		lineNode = document.querySelector(lineQuery),
 		senderNode,
 		sender,
-		type;
+		type,
+		debugNode;
 
-	if (!lineNode || (lineNode.previousSibling && lineNode.previousSibling.id === 'mark')) {
+	if (!lineNode) {
 		// TODO: Determine if `lastMsg` should be emptied if no lineNode was added
 		//lastMsg = {};
 		return;
 	}
 
-	senderNode = document.querySelector(lineQuery + ' .sender');
+	senderNode = lineNode.querySelector('.sender');
+
 	sender = lineNode.getAttribute('data-sender');
 	type = lineNode.getAttribute('data-type');
 
@@ -51,7 +53,9 @@ Textual.newMessagePostedToView = function (line) {
 		return;
 	}
 
-	if (lastMsg.type === type && lastMsg.sender === sender) {
+	if (lineNode.previousSibling && lineNode.previousSibling.id === 'mark') {
+		// don't add classnames just yet. They'll be added when the mark is moved
+	} else if (lastMsg.type === type && lastMsg.sender === sender) {
 		_addClass(lineNode, 'hide-sender');
 		_addClass(lineNode.previousSibling, ' has-next');
 	}
