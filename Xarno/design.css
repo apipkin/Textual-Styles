@@ -134,6 +134,12 @@ p {
   margin-right: 0.6em;
   text-shadow: 0px 2px 3px rgba(230, 230, 230, 0.3);
 }
+[highlight*=true] .message:before {
+  content: '\f075';
+  /* icon-comment */
+
+  color: #bf40bf;
+}
 [type*=debug] .message:before {
   content: '\f188';
   /* icon-bug */
@@ -198,7 +204,7 @@ p {
   content: '\f0ac';
   /* icon-globe */
 
-  color: #16b7df;
+  color: #2fa8c6;
 }
 /* Colors */
 .sender[colornumber='0'],

@@ -209,6 +209,10 @@ p {
 	margin-right: 0.6em;
 	text-shadow: 0px 2px 3px hsla(0, 0, 90%, 0.3);
 }
+[highlight*=true] .message:before {
+	content: '\f075'; /* icon-comment */
+	color: hsl(300, 50%, 50%);
+}
 [type*=debug] .message:before { 
 	content: '\f188'; /* icon-bug */
 	color: hsl(339, 100%, 33%);
@@ -251,7 +255,7 @@ p {
 }
 [type*=website] .message:before { 
 	content: '\f0ac'; /* icon-globe */
-	color: hsl(192, 82%, 48%);
+	color: hsl(192, 62%, 48%);
 }
 
 
