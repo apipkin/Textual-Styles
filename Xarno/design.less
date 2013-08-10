@@ -55,10 +55,6 @@
 @import url('./Data/Resources/css/pure.css');
 
 
-div#body_home p {
-	margin: 0 5px !important;
-	text-indent: 0 !important;
-}
 
 /* Basic Structure */
 
@@ -71,25 +67,35 @@ body {
 	font-family: "proxima-nova", "Helvetica Neue", sans-serif;
 }
 
-#body_home {
-	padding-top: 2em;
-	padding-bottom: 1px;
+.bd.wrapper {
+	padding: 2em 0 0;
 	width: 100%;
-	z-index: 100;
-	position: relative;
+}
+
+.sandbag {
+	display: inline-block;
+	height: 100%;
+	vertical-align: bottom;
+	width: 0px;
+	background: blue;
+}
+#body_home {
+	width: 100%;
 	opacity: 0; /* Set by JavaScript */
 	-webkit-transition: opacity 0.8s linear;
-	position: absolute;
-	bottom: 0;
-	max-height: 97%;
+	vertical-align: bottom;
+	display: inline-block;
 }
 
 
-
 p {
-	margin: 0;
+	margin: 0 5px;
 	position: relative;
 	line-height: 1.5em;
+}
+
+#mark {
+	border-top: 1px dashed #ddd;
 }
 
 
@@ -190,6 +196,12 @@ p {
 	font-weight: 500;
 }
 
+
+/* inline images */
+.inlineimage {
+	display: block;
+	margin: 0.5em 0;
+}
 
 
 /* message decorations */
