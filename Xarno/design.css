@@ -567,3 +567,6 @@ p {
   overflow: visible;
   white-space: normal;
 }
+#topic_bar a {
+  color: #157aac;
+}
