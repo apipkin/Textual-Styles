@@ -53,16 +53,15 @@
 
 
 @import url('./Data/Resources/css/pure.css');
-
-
+@import url('./Data/Resources/css/font-awesome/css/font-awesome.css');
 
 /* Basic Structure */
 
 body {
-	color: #2a2a2a;
+	color: hsl(0, 0%, 16%);
 	overflow: hidden;
 	overflow-y: visible;
-	background-color: #f2f2f2;
+	background-color: hsl(0, 0%, 95%);
 	height: 100%;
 	font-family: "proxima-nova", "Helvetica Neue", sans-serif;
 }
@@ -95,7 +94,7 @@ p {
 }
 
 #mark {
-	border-top: 1px dashed #ddd;
+	border-top: 1px dashed hsl(0, 0%, 87%);
 }
 
 
@@ -117,7 +116,7 @@ p {
 	border-style: solid;
 	padding: 3px 5px;
 	background-image: -webkit-linear-gradient(top, hsla(0, 0%, 93%, 0.5) 0%,hsla(0, 0%, 80%, 0.5) 100%);
-	color: #222 !important;
+	color: hsl(0, 0%, 13%);
 	text-shadow: 0px 2px 3px hsla(0, 0, 90%, 0.3);
 	box-shadow: 0 2px 3px hsla(0, 0%, 10%, 0.3);
 	position: relative;
@@ -138,7 +137,7 @@ p {
 /* Time */
 .time {
 	color: hsl(0, 0%, 70%);
-	background: #fff;
+	background: hsl(0, 0%, 100%);
 	opacity: 0;
 }
 .line:hover .time {
@@ -154,7 +153,7 @@ p {
 	margin-bottom: 0em;
 }
 .with-sender p {
-	background: #fff;
+	background: hsl(0, 0%, 100%);
 	border: 1px solid black;
 	border-top-width: 0;
 	display: block;
@@ -205,9 +204,38 @@ p {
 
 
 /* message decorations */
-body[dir=ltr] [type*=join] .message:before {
-	content: "→";
-  	color: #0c0;
+.message:before {
+	font-family: 'FontAwesome';
+	margin-right: 0.6em;
+}
+[dir=ltr] [type*=debug] .message:before { 
+	content: '\f188'; /* icon-bug */
+}
+[dir=ltr] [type*=invite] .message:before { 
+}
+[dir=ltr] [type*=join] .message:before {
+	content: '\f061'; /* icon-right-arrow */
+  	color: hsl(120, 100%, 40%);
+}
+[dir=ltr] [type*=kick] .message:before { 
+}
+[dir=ltr] [type*=kill] .message:before { 
+	content: '\f05e'; /* icon-ban-circle */
+}
+[dir=ltr] [type*=mode] .message:before { 
+}
+[dir=ltr] [type*=nick] .message:before { 
+}
+[dir=ltr] [type*=part] .message:before { 
+}
+[dir=ltr] [type*=quit] .message:before { 
+	content: '\f05c'; /* icon-remove-circle */
+}
+[dir=ltr] [type*=topic] .message:before { 
+}
+[dir=ltr] [type*=website] .message:before { 
+	content: '\f0ac'; /* icon-globe */
+
 }
 
 
@@ -224,12 +252,12 @@ body[dir=ltr] [type*=join] .message:before {
 	right: 0;
 	z-index: 400;
 	opacity: 0; /* Set by JavaScript */
-	color: #2a2a2a;
+	color: hsl(0, 0%, 16%);
 	position: fixed;
 	padding: 2px 0.5em 3px;
-	box-shadow: 0 1px 5px #777;
-	border-bottom: 1px solid #61778F;
-	background-color: #f2f2f2;
+	box-shadow: 0 1px 5px hsl(0, 0%, 47%);
+	border-bottom: 1px solid hsl(211, 19%, 47%);
+	background-color: hsl(0, 0%, 95%);
 	background-image: -webkit-linear-gradient(top, hsla(0, 0%, 93%, 0.5) 0%,hsla(0, 0%, 80%, 0.5) 100%);
 	-webkit-transition: opacity 0.8s linear;
 	overflow: hidden;

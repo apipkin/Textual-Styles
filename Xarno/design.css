@@ -1,7 +1,9 @@
 @import url('./Data/Resources/css/pure.css');
+
+@import url('./Data/Resources/css/font-awesome/css/font-awesome.css');
 /* Basic Structure */
 body {
-  color: #2a2a2a;
+  color: #292929;
   overflow: hidden;
   overflow-y: visible;
   background-color: #f2f2f2;
@@ -34,7 +36,7 @@ p {
   line-height: 1.5em;
 }
 #mark {
-  border-top: 1px dashed #ddd;
+  border-top: 1px dashed #dedede;
 }
 .line.with-sender {
   margin-top: 1em;
@@ -52,7 +54,7 @@ p {
   border-style: solid;
   padding: 3px 5px;
   background-image: -webkit-linear-gradient(top, rgba(237, 237, 237, 0.5) 0%, rgba(204, 204, 204, 0.5) 100%);
-  color: #222 !important;
+  color: #212121;
   text-shadow: 0px 2px 3px rgba(230, 230, 230, 0.3);
   box-shadow: 0 2px 3px rgba(26, 26, 26, 0.3);
   position: relative;
@@ -71,7 +73,7 @@ p {
 /* Time */
 .time {
   color: #b3b3b3;
-  background: #fff;
+  background: #ffffff;
   opacity: 0;
 }
 .line:hover .time {
@@ -85,7 +87,7 @@ p {
   margin-bottom: 0em;
 }
 .with-sender p {
-  background: #fff;
+  background: #ffffff;
   border: 1px solid black;
   border-top-width: 0;
   display: block;
@@ -127,9 +129,35 @@ p {
   margin: 0.5em 0;
 }
 /* message decorations */
-body[dir=ltr] [type*=join] .message:before {
-  content: "→";
-  color: #0c0;
+.message:before {
+  font-family: 'FontAwesome';
+  margin-right: 0.6em;
+}
+[dir=ltr] [type*=debug] .message:before {
+  content: '\f188';
+  /* icon-bug */
+
+}
+[dir=ltr] [type*=join] .message:before {
+  content: '\f061';
+  /* icon-right-arrow */
+
+  color: #00cc00;
+}
+[dir=ltr] [type*=kill] .message:before {
+  content: '\f05e';
+  /* icon-ban-circle */
+
+}
+[dir=ltr] [type*=quit] .message:before {
+  content: '\f05c';
+  /* icon-remove-circle */
+
+}
+[dir=ltr] [type*=website] .message:before {
+  content: '\f0ac';
+  /* icon-globe */
+
 }
 /* Colors */
 .sender[colornumber='0'],
@@ -482,11 +510,11 @@ body[dir=ltr] [type*=join] .message:before {
   opacity: 0;
   /* Set by JavaScript */
 
-  color: #2a2a2a;
+  color: #292929;
   position: fixed;
   padding: 2px 0.5em 3px;
-  box-shadow: 0 1px 5px #777;
-  border-bottom: 1px solid #61778F;
+  box-shadow: 0 1px 5px #787878;
+  border-bottom: 1px solid #61778f;
   background-color: #f2f2f2;
   background-image: -webkit-linear-gradient(top, rgba(237, 237, 237, 0.5) 0%, rgba(204, 204, 204, 0.5) 100%);
   -webkit-transition: opacity 0.8s linear;
