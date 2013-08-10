@@ -132,32 +132,73 @@ p {
 .message:before {
   font-family: 'FontAwesome';
   margin-right: 0.6em;
+  text-shadow: 0px 2px 3px rgba(230, 230, 230, 0.3);
 }
-[dir=ltr] [type*=debug] .message:before {
+[type*=debug] .message:before {
   content: '\f188';
   /* icon-bug */
 
+  color: #a8003b;
 }
-[dir=ltr] [type*=join] .message:before {
+[type*=invite] .message:before {
+  content: '\f045';
+  /* icon-share */
+
+  color: #f3ab30;
+}
+[type*=join] .message:before {
   content: '\f061';
-  /* icon-right-arrow */
+  /* icon-arrow-right */
 
   color: #00cc00;
 }
-[dir=ltr] [type*=kill] .message:before {
+[type*=kick] .message:before {
   content: '\f05e';
   /* icon-ban-circle */
 
+  color: #b93c1d;
 }
-[dir=ltr] [type*=quit] .message:before {
+[type*=kill] .message:before {
   content: '\f05c';
   /* icon-remove-circle */
 
+  color: #cf0761;
 }
-[dir=ltr] [type*=website] .message:before {
+[type*=mode] .message:before {
+  content: '\f085';
+  /* icon-cogs */
+
+  color: #55667c;
+}
+[type*=nick] .message:before {
+  content: '\f007';
+  /* icon-user */
+
+  color: #8f62f9;
+}
+[type*=part] .message:before {
+  content: '\f126';
+  /* icon-code-fork */
+
+  color: #8607cf;
+}
+[type*=quit] .message:before {
+  content: '\f060';
+  /* icon-arrow-left */
+
+  color: #55667c;
+}
+[type*=topic] .message:before {
+  content: '\f05a';
+  /* icon-info-sign */
+
+  color: #0070a8;
+}
+[type*=website] .message:before {
   content: '\f0ac';
   /* icon-globe */
 
+  color: #16b7df;
 }
 /* Colors */
 .sender[colornumber='0'],

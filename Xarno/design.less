@@ -207,35 +207,51 @@ p {
 .message:before {
 	font-family: 'FontAwesome';
 	margin-right: 0.6em;
+	text-shadow: 0px 2px 3px hsla(0, 0, 90%, 0.3);
 }
-[dir=ltr] [type*=debug] .message:before { 
+[type*=debug] .message:before { 
 	content: '\f188'; /* icon-bug */
+	color: hsl(339, 100%, 33%);
 }
-[dir=ltr] [type*=invite] .message:before { 
+[type*=invite] .message:before { 
+	content: '\f045'; /* icon-share */
+	color: hsl(38, 89%, 57%);
 }
-[dir=ltr] [type*=join] .message:before {
-	content: '\f061'; /* icon-right-arrow */
+[type*=join] .message:before {
+	content: '\f061'; /* icon-arrow-right */
   	color: hsl(120, 100%, 40%);
 }
-[dir=ltr] [type*=kick] .message:before { 
-}
-[dir=ltr] [type*=kill] .message:before { 
+[type*=kick] .message:before { 
 	content: '\f05e'; /* icon-ban-circle */
+	color: hsl(12, 73%, 42%);
 }
-[dir=ltr] [type*=mode] .message:before { 
-}
-[dir=ltr] [type*=nick] .message:before { 
-}
-[dir=ltr] [type*=part] .message:before { 
-}
-[dir=ltr] [type*=quit] .message:before { 
+[type*=kill] .message:before { 
 	content: '\f05c'; /* icon-remove-circle */
+	color: hsl(333, 93%, 42%);
 }
-[dir=ltr] [type*=topic] .message:before { 
+[type*=mode] .message:before { 
+	content: '\f085'; /* icon-cogs */
+	color: hsl(214, 19%, 41%);
 }
-[dir=ltr] [type*=website] .message:before { 
+[type*=nick] .message:before { 
+	content: '\f007'; /* icon-user */
+	color: hsl(258, 93%, 68%);
+}
+[type*=part] .message:before { 
+	content: '\f126'; /* icon-code-fork */
+	color: hsl(278, 93%, 42%);
+}
+[type*=quit] .message:before { 
+	content: '\f060'; /* icon-arrow-left */
+	color: hsl(214, 19%, 41%);
+}
+[type*=topic] .message:before { 
+	content: '\f05a'; /* icon-info-sign */
+	color: hsl(200, 100%, 33%);
+}
+[type*=website] .message:before { 
 	content: '\f0ac'; /* icon-globe */
-
+	color: hsl(192, 82%, 48%);
 }
 
 
