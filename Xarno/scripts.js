@@ -115,6 +115,15 @@ Textual.viewFinishedLoading = function () {
 
 	lastMsg = {};
 
+	document.querySelector('#toolbar button').addEventListener('click', function (e) {
+		var htmlNode = document.querySelector('html');
+
+		if (htmlNode.className.match('dark')) {
+			_removeClass(htmlNode, 'dark');
+		} else {
+			_addClass(htmlNode, 'dark');
+		}
+	});
 };
 
 Textual.viewFinishedReload =  function () {
@@ -168,5 +177,29 @@ var _sub = function (str, obj) {
 		}
 
 		node.className = className.join(' ');
+	},
+
+	/**
+	 Removes provided class(es) from the node. 
+	 @method _removeClass
+	 @protected
+	 @param {DOMNode} node Node to which classNames will be added
+	 @param {String} classes...n List of classnames to add to the provided node
+	 */
+	_removeClass = function (node /*, classes...n */) {
+		var args = Array.prototype.slice.call(arguments),
+			node = args.shift(),
+			className = (node.className || '').split(' '),
+			classes = [],
+			i,
+			len;
+
+		for (i = 0, len = className.length; i < len; i++) {
+			if (args.indexOf(className[i]) < 0) {
+				classes.push(className[i]);
+			}
+		}
+
+		node.className = classes.join(' ');
 	};
 
