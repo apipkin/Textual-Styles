@@ -9,4 +9,3 @@ Then choose the Style from the Textual Preferences menu.
 ## Include Styles
 **Xarno**
 ![Xarno Screenshot](https://raw.githubusercontent.com/apipkin/Textual-Styles/master/Xarno.png)
-
