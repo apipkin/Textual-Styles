@@ -30,13 +30,13 @@
 @color_29: #569c96;
 @color_30: #08465f;
 
-@itterations: 0; 
+@itterations: 0;
 
 .loopingClass (@index) when (@index < 31) {
 	@color: "color_@{index}";
 
-	.sender[colornumber='@{index}'], 
-	.inline_nickname[colornumber='@{index}'] { 
+	.sender[colornumber='@{index}'],
+	.inline_nickname[colornumber='@{index}'] {
 		color: @@color;
 	}
 	.sender[colornumber='@{index}'] {
@@ -69,8 +69,10 @@
 /* Basic Structure */
 
 body {
+/*
 	overflow: hidden;
 	overflow-y: visible;
+	*/
 	height: 100%;
 	font-family: "proxima-nova", "Helvetica Neue", sans-serif;
 }
@@ -208,37 +210,37 @@ p {
 [highlight*=true] .message:before {
 	content: '\f075'; /* icon-comment */
 }
-[type*=debug] .message:before { 
+[type*=debug] .message:before {
 	content: '\f188'; /* icon-bug */
 }
-[type*=invite] .message:before { 
+[type*=invite] .message:before {
 	content: '\f045'; /* icon-share */
 }
 [type*=join] .message:before {
 	content: '\f061'; /* icon-arrow-right */
 }
-[type*=kick] .message:before { 
+[type*=kick] .message:before {
 	content: '\f05e'; /* icon-ban-circle */
 }
-[type*=kill] .message:before { 
+[type*=kill] .message:before {
 	content: '\f05c'; /* icon-remove-circle */
 }
-[type*=mode] .message:before { 
+[type*=mode] .message:before {
 	content: '\f085'; /* icon-cogs */
 }
-[type*=nick] .message:before { 
+[type*=nick] .message:before {
 	content: '\f007'; /* icon-user */
 }
-[type*=part] .message:before { 
+[type*=part] .message:before {
 	content: '\f126'; /* icon-code-fork */
 }
-[type*=quit] .message:before { 
+[type*=quit] .message:before {
 	content: '\f060'; /* icon-arrow-left */
 }
-[type*=topic] .message:before { 
+[type*=topic] .message:before {
 	content: '\f05a'; /* icon-info-sign */
 }
-[type*=website] .message:before { 
+[type*=website] .message:before {
 	content: '\f0ac'; /* icon-globe */
 }
 

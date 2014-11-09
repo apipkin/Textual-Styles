@@ -1,11 +1,10 @@
 {{! The 'line types' folder needs to be copied to a custom style to modify this file. }}
 
-<div type="{{lineType}}" 
-		data-type="{{lineType}}" 
-		command="{{rawCommand}}" 
-		class="line {{lineClassAttributeRepresentation}} pure-g without-sender" 
-		id="line-{{lineNumber}}" 
-		time="{{lineRenderTime}}">
+<div type="{{lineType}}"
+		data-type="{{lineType}}"
+		command="{{rawCommand}}"
+		class="line {{lineClassAttributeRepresentation}} pure-g without-sender"
+		id="line-{{lineNumber}}">
 	<p>
 		<span class="pure-u-11-12"><span class="message" type="{{lineType}}">{{{formattedMessage}}}</span></span>
 		<span class="time pure-u-1-12">{{formattedTimestamp}}</span>

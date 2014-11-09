@@ -1,205 +1,85 @@
-/* Defined in: "Textual.app -> Contents -> Resources -> JavaScript -> API -> core.js" */
+/* Defined in: "Textual 5.app -> Contents -> Resources -> JavaScript -> API -> core.js" */
 
-/**
- Storage of the last message that was triggered in the post. 
- @property lastMsg
- @type Object
-**/
-var lastMsg = {
-		/* type */
-		/* sender */
-	},
-	
-	/** 
-	 Storage of previousSibling to the current history indicator positoin
-	 @property markPrevNode
-	 @type DOMNode
-	**/
-	markPrevNode;
+var mappedSelectedUsers = new Array();
 
-/** 
- Looks at current line and previous line and tries to determine if they should
- be visually merged together. This is accomplished by adding `has-next` to the
- previous line and `hide-sender` to the current line being added.
-
- @method newMessagePostedToView
- @param {String} line Unique id of the line just added to the list
- */
-Textual.newMessagePostedToView = function (line) {
-	
-	//(updateBodyHome && updateBodyHome());
-
-	var lineQuery = _sub('#line{line}.line, #line-{line}.line', { line: line }),
-		lineNode = document.querySelector(lineQuery),
-		senderNode,
-		sender,
-		type,
-		debugNode;
-
-	if (!lineNode) {
-		// TODO: Determine if `lastMsg` should be emptied if no lineNode was added
-		//lastMsg = {};
-		return;
-	}
-
-	senderNode = lineNode.querySelector('.sender');
-
-	sender = lineNode.getAttribute('data-sender');
-	type = lineNode.getAttribute('data-type');
-
-	if (!type) {
-		// TODO: Determine if `lastMsg` should be emptied if no type was found
-		//lastMsg = {};
-		return;
-	}
-
-	if (lineNode.previousSibling && lineNode.previousSibling.id === 'mark') {
-		// don't add classnames just yet. They'll be added when the mark is moved
-	} else if (lastMsg.type === type && lastMsg.sender === sender) {
-		_addClass(lineNode, 'hide-sender');
-		_addClass(lineNode.previousSibling, ' has-next');
-	}
-
-	lastMsg = {
-		type: type,
-		sender: sender || null
-	};
-
-};
-
-/**
- When history mark is moved, check to see if it was previously between two like 
- line types from the same author. If they were, join them back together by adding
- `has-next` to the previous line className and `hide-sender` to the next line
- className
-
- @method historyIndicatorAddedToView
- **/
-Textual.historyIndicatorAddedToView = function () {
-	var markNode = document.querySelector('#mark'),
-		prevLine = {},
-		nextLine = {};
-
-	if (markPrevNode) {
-		prevLine = markPrevNode;
-		nextLine = prevLine.nextSibling;
-
-		prevLine = {
-			node: prevLine,
-			type: prevLine.getAttribute('data-type'),
-			sender: prevLine.getAttribute('data-sender')
-		};
-
-		nextLine = {
-			node: nextLine,
-			type: nextLine.getAttribute('data-type'),
-			sender: nextLine.getAttribute('data-sender')
-		};
-
-		if (prevLine.type === nextLine.type && prevLine.sender === nextLine.sender) {
-			_addClass(prevLine.node, 'has-next');
-			_addClass(nextLine.node, 'hide-sender');
-		}
-	}
-
-	markPrevNode = markNode.previousSibling;
-};
-
-
-Textual.viewFinishedLoading = function () {
-	Textual.fadeInLoadingScreen(1.00, 0.95);
+Textual.viewBodyDidLoad = function()
+{
+	Textual.fadeOutLoadingScreen(1.00, 0.95);
 
 	setTimeout(function() {
 		Textual.scrollToBottomOfView()
 	}, 500);
+}
 
-	lastMsg = {};
+Textual.newMessagePostedToView = function(line)
+{
+    var element = document.getElementById("line-" + line);
 
-	document.querySelector('#toolbar button').addEventListener('click', function (e) {
-		var htmlNode = document.querySelector('html');
+    updateNicknameAssociatedWithNewMessage(element);
+}
 
-		if (htmlNode.className.match('dark')) {
-			_removeClass(htmlNode, 'dark');
-		} else {
-			_addClass(htmlNode, 'dark');
-		}
-	});
-};
+Textual.nicknameSingleClicked = function(e)
+{
+	userNicknameSingleClickEvent(e);
+}
 
-Textual.viewFinishedReload =  function () {
-	Textual.viewFinishedLoading();
-};
+function updateNicknameAssociatedWithNewMessage(e)
+{
+	/* We only want to target plain text messages. */
+	var elementType = e.getAttribute("ltype");
 
+	if (elementType == "privmsg" || elementType == "action") {
+		/* Get the nickname information. */
+		var senderSelector = e.querySelector(".sender");
 
-/**
- Does a simple string replace using object key value pairs. This substitution 
- method will replace `{key}` matches with the value of the key in the provided
- object. If an instance of `{key}` is in the source string but that key is not
- found, the token will remain in the returned string.
- @method _sub
- @protected
- @param {String} str Source string to have substitutions performed on
- @param {Object} obj Object consisting of key value pairs for replacement
- @return {String} Modified string after replacement
-**/
-var _sub = function (str, obj) {
-		var regex;
+		if (senderSelector) {
+			/* Is this a mapped user? */
+			var nickname = senderSelector.getAttribute("nickname");
 
-		for (o in obj) {
-			if (obj.hasOwnProperty(o)) {
-				regex = new RegExp('{' + o + '}', 'ig');
-				str = str.replace(regex, obj[o]);
+			/* If mapped, toggle status on for new message. */
+			if (mappedSelectedUsers.indexOf(nickname) > -1) {
+				toggleSelectionStatusForNicknameInsideElement(senderSelector);
 			}
 		}
+	}
+}
 
-		return str;
-	},
+function toggleSelectionStatusForNicknameInsideElement(e)
+{
+	/* e is nested as the .sender so we have to go three parents
+	 up in order to reach the parent div that owns it. */
+	var parentSelector = e.parentNode.parentNode.parentNode.parentNode;
 
-	/**
-	 Adds provided class(es) to the node. Ensures no duplicate classNames are added
-	 due to this method.
-	 @method _addClass
-	 @protected
-	 @param {DOMNode} node Node to which classNames will be added
-	 @param {String} classes...n List of classnames to add to the provided node
-	 */
-	_addClass = function (node /*, classes...n */) {
-		var args = Array.prototype.slice.call(arguments),
-			node = args.shift(),
-			className = (node.className || '').split(' '),
-			i,
-			len;
+	parentSelector.classList.toggle("selectedUser");
+}
 
-		for (i = 0, len = args.length; i < len; i++) {
-			if (className.indexOf(args[i]) < 0) {
-				className.push(args[i]);
-			}
-		}
+function userNicknameSingleClickEvent(e)
+{
+	/* This is called when the .sender is clicked. */
+	var nickname = e.getAttribute("nickname");
 
-		node.className = className.join(' ');
-	},
+	/* Toggle mapped status for nickname. */
+	var mappedIndex = mappedSelectedUsers.indexOf(nickname);
 
-	/**
-	 Removes provided class(es) from the node. 
-	 @method _removeClass
-	 @protected
-	 @param {DOMNode} node Node to which classNames will be added
-	 @param {String} classes...n List of classnames to add to the provided node
-	 */
-	_removeClass = function (node /*, classes...n */) {
-		var args = Array.prototype.slice.call(arguments),
-			node = args.shift(),
-			className = (node.className || '').split(' '),
-			classes = [],
-			i,
-			len;
+	if (mappedIndex == -1) {
+		mappedSelectedUsers.push(nickname);
+	} else {
+		mappedSelectedUsers.splice(mappedIndex, 1);
+	}
 
-		for (i = 0, len = className.length; i < len; i++) {
-			if (args.indexOf(className[i]) < 0) {
-				classes.push(className[i]);
-			}
-		}
+	/* Gather basic information. */
+    var documentBody = document.getElementById("body_home");
 
-		node.className = classes.join(' ');
-	};
+    var allLines = documentBody.querySelectorAll('div[ltype="privmsg"], div[ltype="action"]');
 
+	/* Update all elements of the DOM matching conditions. */
+    for (var i = 0, len = allLines.length; i < len; i++) {
+        var sender = allLines[i].querySelectorAll(".sender");
+
+        if (sender.length > 0) {
+            if (sender[0].getAttribute("nickname") === nickname) {
+				toggleSelectionStatusForNicknameInsideElement(sender[0]);
+            }
+        }
+    }
+}

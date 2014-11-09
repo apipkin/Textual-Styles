@@ -1,22 +1,33 @@
 {{! The 'line types' folder needs to be copied to a custom style to modify this file. }}
 
-<div type="{{lineType}}" 
-		data-type="{{lineType}}" data-sender="{{formattedNickname}}"
-		command="{{rawCommand}}"
-		highlight="{{highlightAttributeRepresentation}}" 
-		class="line {{lineClassAttributeRepresentation}} pure-g with-sender" 
-		id="line-{{lineNumber}}"
-		time="{{lineRenderTime}}">
-		
-	<span class="sender pure-u-1"
-			ondblclick="Textual.nicknameDoubleClicked()" 
-			oncontextmenu="Textual.openStandardNicknameContextualMenu()" 
-			type="{{nicknameType}}" 
-			nick="{{nickname}}" 
-			{{#nicknameColorHashingEnabled}} 
-				colornumber="{{nicknameColorNumber}}"
-			{{/nicknameColorHashingEnabled}}>
-		{{formattedNickname}}
+<div type="{{lineType}}"
+	{{^isRemoteMessage}}
+			mtype="{{nicknameType}}"
+	{{/isRemoteMessage}}
+
+	{{#isEncrypted}}
+			encrypted="true"
+	{{/isEncrypted}}
+
+	data-type="{{lineType}}"
+	data-sender="{{formattedNickname}}"
+	command="{{rawCommand}}"
+	highlight="{{highlightAttributeRepresentation}}"
+	class="line {{lineClassAttributeRepresentation}} pure-g with-sender"
+	id="line-{{lineNumber}}"
+	time="{{lineRenderTime}}">
+
+	<span class="senderContainer pure-u-1">
+		<span class="sender pure-u-1"
+				ondblclick="Textual.nicknameDoubleClicked()"
+				oncontextmenu="Textual.openStandardNicknameContextualMenu()"
+				type="{{nicknameType}}"
+				nick="{{nickname}}"
+				{{#nicknameColorHashingEnabled}}
+					colornumber="{{nicknameColorNumber}}"
+				{{/nicknameColorHashingEnabled}}>
+			{{formattedNickname}}
+		</span>
 	</span>
 
 {{#isRemoteMessage}}
@@ -33,10 +44,16 @@
 		<span class="pure-u-11-12">
 			<span class="message" type="{{lineType}}">
 				{{{formattedMessage}}}
-				
+
 				{{#inlineMediaAvailable}}
 					{{#inlineMediaArray}}
-						<a href="{{{anchorLink}}}" onclick="return Textual.hideInlineImage(this)"><img src="{{{imageURL}}}" class="inlineimage" style="max-width: {{preferredMaximumWidth}}px;" title="Hide image by shift clicking." /></a>
+						<span class="inlineImageCell" id="inlineImage-{{anchorInlineImageUniqueID}}" style="display: none;">
+							<span class="closeButton" href="#" onclick="Textual.toggleInlineImage('{{anchorInlineImageUniqueID}}', false);">×</span>
+
+							<a href="{{{anchorLink}}}" onclick="return InlineImageLiveResize.negateAnchorOpen()">
+								<img src="{{{imageURL}}}" class="image" style="max-width: {{preferredMaximumWidth}}px;" />
+							</a>
+						</span>
 					{{/inlineMediaArray}}
 				{{/inlineMediaAvailable}}
 			</span>
