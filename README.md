@@ -6,7 +6,7 @@ For instance, the Xarno theme would live at `~/Library/Containers/com.codeux.irc
 
 Then choose the Style from the Textual Preferences menu.
 
-## Supports
+## Support
 Upgraded theme for support of Textual 5. Previous versions can be found on the long lived branch `textual4`.
 
 ## Include Styles
