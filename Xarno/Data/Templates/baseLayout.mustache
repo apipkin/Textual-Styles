@@ -92,7 +92,9 @@
 		</style>
 	</head>
 
-	<body type="{{viewTypeToken}}"
+	<body  viewtype="{{viewTypeToken}}" type="{{viewTypeToken}}"
+
+		onload="Textual.viewBodyDidLoad()"
 
 		{{#isChannelView}}
 			channelname="{{channelName}}"
@@ -110,10 +112,10 @@
 			<div class="bd wrapper">
 				<div class="sandbag"></div><div id="body_home">{{! Filled at runtime. }}</div>
 			</div>
-
 			{{#isChannelView}}
-				<div id="topic_bar">{{{formattedTopicValue}}}</div>
+				<div id="topic_bar" ondblclick="Textual.topicDoubleClicked()">{{{formattedTopicValue}}}</div>
 			{{/isChannelView}}
+
 			<div id="toolbar">
 				<button>Toggle Theme</button>
 			</div>

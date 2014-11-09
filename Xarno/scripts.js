@@ -1,14 +1,101 @@
 /* Defined in: "Textual 5.app -> Contents -> Resources -> JavaScript -> API -> core.js" */
 
-var mappedSelectedUsers = new Array();
+var mappedSelectedUsers = new Array(),
+
+	/**
+	 Does a simple string replace using object key value pairs. This substitution
+	 method will replace `{key}` matches with the value of the key in the provided
+	 object. If an instance of `{key}` is in the source string but that key is not
+	 found, the token will remain in the returned string.
+	 @method _sub
+	 @protected
+	 @param {String} str Source string to have substitutions performed on
+	 @param {Object} obj Object consisting of key value pairs for replacement
+	 @return {String} Modified string after replacement
+	**/
+	_sub = function (str, obj) {
+		var regex;
+
+		for (o in obj) {
+			if (obj.hasOwnProperty(o)) {
+				regex = new RegExp('{' + o + '}', 'ig');
+				str = str.replace(regex, obj[o]);
+			}
+		}
+
+		return str;
+	},
+
+	/**
+	 Adds provided class(es) to the node. Ensures no duplicate classNames are added
+	 due to this method.
+	 @method _addClass
+	 @protected
+	 @param {DOMNode} node Node to which classNames will be added
+	 @param {String} classes...n List of classnames to add to the provided node
+	 */
+	_addClass = function (node /*, classes...n */) {
+		var args = Array.prototype.slice.call(arguments),
+			node = args.shift(),
+			className = (node.className || '').split(' '),
+			i,
+			len;
+
+		for (i = 0, len = args.length; i < len; i++) {
+			if (className.indexOf(args[i]) < 0) {
+				className.push(args[i]);
+			}
+		}
+
+		node.className = className.join(' ');
+	},
+
+	/**
+	 Removes provided class(es) from the node.
+	 @method _removeClass
+	 @protected
+	 @param {DOMNode} node Node to which classNames will be added
+	 @param {String} classes...n List of classnames to add to the provided node
+	 */
+	_removeClass = function (node /*, classes...n */) {
+		var args = Array.prototype.slice.call(arguments),
+			node = args.shift(),
+			className = (node.className || '').split(' '),
+			classes = [],
+			i,
+			len;
+
+		for (i = 0, len = className.length; i < len; i++) {
+			if (args.indexOf(className[i]) < 0) {
+				classes.push(className[i]);
+			}
+		}
+
+		node.className = classes.join(' ');
+	};
 
 Textual.viewBodyDidLoad = function()
 {
+	console.log('yup');
+
 	Textual.fadeOutLoadingScreen(1.00, 0.95);
 
 	setTimeout(function() {
 		Textual.scrollToBottomOfView()
 	}, 500);
+
+console.log(document.querySelector('#toolbar button'));
+
+	document.querySelector('#toolbar button').addEventListener('click', function (e) {
+		var htmlNode = document.querySelector('html');
+
+		if (htmlNode.className.match('dark')) {
+			_removeClass(htmlNode, 'dark');
+		} else {
+			_addClass(htmlNode, 'dark');
+		}
+	});
+
 }
 
 Textual.newMessagePostedToView = function(line)

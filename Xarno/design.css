@@ -37,6 +37,8 @@ body {
 #body_home {
 
   width: 100%;
+  opacity: 0;
+  /* Set by JavaScript */
 
   -webkit-transition: opacity 0.8s linear;
   vertical-align: bottom;
