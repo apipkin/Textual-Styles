@@ -33,15 +33,17 @@ body {
   vertical-align: bottom;
   width: 0px;
 }
+
 #body_home {
+
   width: 100%;
-  opacity: 0;
-  /* Set by JavaScript */
 
   -webkit-transition: opacity 0.8s linear;
   vertical-align: bottom;
   display: inline-block;
+
 }
+
 p {
   margin: 0 5px;
   position: relative;
@@ -676,6 +678,7 @@ body {
 .dark .without-sender a {
   color: #3d3f6b;
 }
+
 /* message decorations */
 .dark [highlight*=true] .message:before {
   color: #bf40bf;
